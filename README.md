@@ -6,7 +6,7 @@ The aim of this tool is to help physicians easily post-process multiple MS MR se
 ## Prerequisite
 - [ANTsPy](https://pypi.org/project/antspyx/) pip install antspyx 
 - [Gradio](https://www.gradio.app/) pip install gradio
-- python==3.9.0
+- python=3.9.0
 
 
 ## Main functions
@@ -35,7 +35,7 @@ And it will show the localhost link to access
 ## Please check out our other work in MS
 
 1. [SSL2](https://arxiv.org/abs/2303.05026): We studied how to leverage self-supervised learning and semi-supervised learning in limited data segmentation in 7T MS dataset
-1. [Using Phase Patterns to Differentiate Lesion Severity in Multiple Sclerosis](https://scholar.google.com/citations?view_op=view_citation&hl=zh-TW&user=QMJb-tUAAAAJ&sortby=pubdate&citation_for_view=QMJb-tUAAAAJ:eQOLeE2rZwMC) (ACTRIMS 2023): We studied to enlarge our study in Phase modality in which we found a crucial biomarker for MS diagnosis.
+2. [Using Phase Patterns to Differentiate Lesion Severity in Multiple Sclerosis](https://scholar.google.com/citations?view_op=view_citation&hl=zh-TW&user=QMJb-tUAAAAJ&sortby=pubdate&citation_for_view=QMJb-tUAAAAJ:eQOLeE2rZwMC) (ACTRIMS 2023): We studied to enlarge our study in Phase modality in which we found a crucial biomarker for MS diagnosis.
 
 ## Reference:
 ```bibtex
@@ -48,7 +48,9 @@ And it will show the localhost link to access
   year={2023},
   organization={SPIE}
 }
-@article{doi:10.1177/13524585231169436,
+```
+```
+@article{actrims2023,
 	title ={ACTRIMS Forum 2023},
 	journal = {Multiple Sclerosis Journal},
 	volume = {29},
@@ -56,5 +58,6 @@ And it will show the localhost link to access
 	pages = {P283},
 	year = {2023},
 	doi = {10.1177/13524585231169436}
+	}
 ```
 
