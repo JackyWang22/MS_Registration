@@ -1,7 +1,7 @@
-## A Easy-to-play Tool for MS multisequence preprocessing
+## An easy-to-play Tool for MS multisequence preprocessing
 Author: [Jiacheng Wang](https://jackywang22.github.io/) <br>
-Copyright: [MedICL Lab](https://github.com/MedICL-VU) at Vanderbilt University and [Bagnato Lab](https://www.vumc.org/bagnato-lab/our-mission) <br>
-The aim of this tool is to help physicians easily post-process multiple MS MR sequences. It also support to handle longitudinal data to have multi-sequence comparison. The UI can help researchers easily visualize and process the data. More functions will keep updated... Please stay tuned.
+Copyright: [MedICL Lab](https://github.com/MedICL-VU) at Vanderbilt University and [Bagnato Lab](https://www.vumc.org/bagnato-lab/our-mission) at VUMC. <br>
+The aim of this tool is to help physicians easily post-process multiple MS MR sequences. It also supports handling longitudinal data to have multi-sequence comparisons. The UI can help researchers easily visualize and process the data. More functions will keep updated... Please stay tuned.
 
 ## Prerequisite
 - [ANTsPy](https://pypi.org/project/antspyx/) pip install antspyx 
@@ -14,15 +14,15 @@ The aim of this tool is to help physicians easily post-process multiple MS MR se
 <p float="left" align="center">
 <img src="images/tab1.png" width="800" /> 
 <figcaption align="center">
-This is an example of the the function. It support the re-orientation function in which it is flipped horrizontallly in the axial plannar. However, in the future the auto re-orientation function will be applied. Then it support the matching from qMT space to the SWI space
+This is an example of this function. It supports the re-orientation function in which it is flipped horizontally in the axial planar. However, in the future, the auto re-orientation function will be applied. Then it supports the matching from the qMT space to the SWI space
 </figcaption>
 </p>
 
-1. Support longitudinal analysis to register Year-1, Year-2, ... to Baseline scan. We utlize FLAIR (in SWI space) from longitudinal studies and apply the transform to other modalities.
+1. Support longitudinal analysis to register Year-1, Year-2, ... to Baseline scan. We utilize FLAIR (in SWI space) from longitudinal studies and apply the transform to other modalities.
 <p float="left" align="center">
 <img src="images/tab2.png" width="800" /> 
 <figcaption align="center">
-This is an example of the the function. We can select the baseline FLAIR as reference and upload the modalities in the longitudinal studies. We will study the missing modalities issue. Please tay tuned....
+This is an example of this function. We can select the baseline FLAIR as a reference and upload the modalities in the longitudinal studies. We will study the missing modalities issue. Please stay tuned....
 </figcaption>
 </p>
 
@@ -30,7 +30,7 @@ This is an example of the the function. We can select the baseline FLAIR as refe
 ```
 python main.py
 ```
-And it will show the localhost link to access
+It will show the localhost link to access
 
 ## Please check out our other work in MS
 
