@@ -4,8 +4,8 @@ Copyright: [MedICL Lab](https://github.com/MedICL-VU) at Vanderbilt University a
 The aim of this tool is to help physicians easily post-process multiple MS MR sequences. It also supports handling longitudinal data to have multi-sequence comparisons. The UI can help researchers easily visualize and process the data. More functions will keep updated... Please stay tuned.
 
 ## Prerequisite
-- [ANTsPy](https://pypi.org/project/antspyx/) pip install antspyx 
-- [Gradio](https://www.gradio.app/) pip install gradio
+- [ANTsPy](https://pypi.org/project/antspyx/): ```pip install antspyx``` 
+- [Gradio](https://www.gradio.app/): ```pip install gradio```
 - python=3.9.0
 
 
@@ -49,7 +49,7 @@ It will show the localhost link to access
   organization={SPIE}
 }
 ```
-```
+```bibtex
 @article{actrims2023,
 	title ={ACTRIMS Forum 2023},
 	journal = {Multiple Sclerosis Journal},
