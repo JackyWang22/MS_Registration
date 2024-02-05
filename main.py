@@ -78,6 +78,18 @@ def registerLongi(sub_id, file1, file2, file3, file4, file5, file6, file7, choic
 
     return [output_path1, output_path2, output_path3, output_path4, output_path5, output_path6]
 
+def fixOrientation(sub_id, file1, file2, file3):
+
+    flair = nib.load(file1.name)
+    psr = nib.load(file2.name).get_fdata()
+    r1f = nib.load(file3.name).get_fdata()
+
+    output_path1 = f"{sub_id}_PSR_reg.nii"
+    output_path2 = f"{sub_id}_R1F_reg.nii"
+
+    nib.Nifti1Image(np.flip(psr, 1)[:,:,::-1], flair.affine).to_filename(output_path1)
+    nib.Nifti1Image(np.flip(r1f, 1)[:,:,::-1], flair.affine).to_filename(output_path2)
+    return [output_path1, output_path2]
 
 # Create a single Blocks instance
 with gr.Blocks() as app:
@@ -121,5 +133,18 @@ with gr.Blocks() as app:
 
         output_files = gr.Files(label="Download Image(s)")
         gr.Button("Process").click(registerLongi, inputs=[new_sub_id, b_flair, flair, swi, phase, fswi, psr, r1f, choice], outputs=output_files)
+
+
+    ## Special Case to solve the very first cohort of the scans
+    with gr.Tab('Fix the orientation for early-stage cohort'):
+        gr.Markdown("### Please provide the FLAIR image where you drew the ROI")
+        flair = gr.File(label="Upload FLAIR")
+        sub_id = gr.Textbox(label="Enter Subject ID")
+        with gr.Row():
+            psr = gr.File(label="Upload registered PSR")
+            r1f = gr.File(label="Upload registered R1F")
+
+        output_files = gr.Files(label="Download Image(s)")
+        gr.Button("Process").click(fixOrientation, inputs=[sub_id, flair, psr, r1f], outputs=output_files)
 # Run the app
 app.launch()
