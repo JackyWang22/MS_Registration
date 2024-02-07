@@ -91,6 +91,29 @@ def fixOrientation(sub_id, file1, file2, file3):
     nib.Nifti1Image(np.flip(r1f, 1)[:,:,::-1], flair.affine).to_filename(output_path2)
     return [output_path1, output_path2]
 
+def flipDirection(sub_id, choice, file1, file2):
+    aff = nib.load(file1.name).affine
+    psr = nib.load(file1.name).get_fdata()
+    r1f = nib.load(file2.name).get_fdata()
+
+    output_path1 = f"{sub_id}_PSR_flip.nii"
+    output_path2 = f"{sub_id}_R1F_flip.nii"
+    
+    if choice == 'Horizontal':
+        nib.Nifti1Image(np.flip(psr, 0), aff).to_filename(output_path1)
+        nib.Nifti1Image(np.flip(r1f, 0), aff).to_filename(output_path2)
+        return [output_path1, output_path2]
+
+    if choice == 'Vertical':
+        nib.Nifti1Image(np.flip(psr, 1), aff).to_filename(output_path1)
+        nib.Nifti1Image(np.flip(r1f, 1), aff).to_filename(output_path2)
+        return [output_path1, output_path2]
+
+    if choice == 'Depth':
+        nib.Nifti1Image(np.flip(psr, 2), aff).to_filename(output_path1)
+        nib.Nifti1Image(np.flip(r1f, 2), aff).to_filename(output_path2)
+        return [output_path1, output_path2]
+
 # Create a single Blocks instance
 with gr.Blocks() as app:
     gr.Markdown("<center><h1>post Processing to multi-modalities of MS MR sequences for Longitudinal Research</h1></center>")
@@ -146,5 +169,18 @@ with gr.Blocks() as app:
 
         output_files = gr.Files(label="Download Image(s)")
         gr.Button("Process").click(fixOrientation, inputs=[sub_id, flair, psr, r1f], outputs=output_files)
+
+
+    ## Special Case to solve the very first cohort of the scans
+    with gr.Tab('Fix the orientation for early-stage cohort'):
+        gr.Markdown("### Flip among a specific direction")
+        sub_id = gr.Textbox(label="Enter Subject ID")
+        choice = gr.Radio(["Horizontal", "Vertical", "Depth"], label="Select the direction")
+        with gr.Row():
+            psr = gr.File(label="Upload registered PSR")
+            r1f = gr.File(label="Upload registered R1F")
+        output_files = gr.Files(label="Download Image(s)")
+        gr.Button("Process").click(flipDirection, inputs=[sub_id, choice, psr, r1f], outputs=output_files)
+     
 # Run the app
 app.launch()
